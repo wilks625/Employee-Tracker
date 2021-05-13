@@ -5,7 +5,7 @@ USE trackEmployeeDB;
 
 CREATE TABLE department (
   ID INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(30) NULL,
+  dept_name VARCHAR(30) NULL,
   PRIMARY KEY (ID)
 );
 

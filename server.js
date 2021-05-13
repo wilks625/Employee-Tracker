@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
   user: "root",
   // Be sure to update with your own MySQL password!
   password: "Quigley!e",
-  database: "top_songsDB",
+  database: "trackEmployeeDB",
 });
 
 connection.connect((err) => {
@@ -79,3 +79,41 @@ const runSearch = () => {
       }
     });
 };
+
+// viewDept();
+
+// viewRole();
+
+// viewEmployee();
+
+const addDept = () => {
+  inquirer
+    .prompt({
+      name: 'addDept',
+      type: 'input',
+      message: 'What is the name of the Department you would like to add?',
+    })
+    .then((answer) => {
+      // when finished prompting, insert a new item into the db with that info
+      connection.query(
+        'INSERT INTO department SET ?',
+        
+        {
+          dept_name: answer.addDept,
+          
+        },
+        (err) => {
+          if (err) throw err;
+          console.log('Your auction was created successfully!');
+          // re-prompt the user for if they want to bid or post
+          runSearch();
+        }
+      );
+    });
+};
+
+// addRole();
+
+// addEmployee();
+
+// updateRole();
