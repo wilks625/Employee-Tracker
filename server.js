@@ -80,7 +80,6 @@ const runSearch = () => {
     });
 };
 
-// viewDept();
 const viewDept = () => {
   connection.query('SELECT * FROM department', (err, res) => {
     if (err) throw err;
@@ -88,10 +87,10 @@ const viewDept = () => {
       console.log(`${ID} | ${dept_name}`);
     });
     console.log('-----------------------------------');
+    runSearch();
   });
 };
 
-// viewRole();
 const viewRole = () => {
   connection.query('SELECT * FROM emp_role', (err, res) => {
     if (err) throw err;
@@ -99,11 +98,10 @@ const viewRole = () => {
       console.log(`${ID} | ${title} | ${salary} | ${department_id}`);
     });
     console.log('-----------------------------------');
+    runSearch();
   });
 };
 
-
-// viewEmployee();
 const viewEmployee = () => {
   connection.query('SELECT * FROM employee', (err, res) => {
     if (err) throw err;
@@ -111,6 +109,7 @@ const viewEmployee = () => {
       console.log(`${ID} | ${first_name} | ${last_name} | ${role_id} | ${manager_id}`);
     });
     console.log('-----------------------------------');
+    runSearch();
   });
 };
 
