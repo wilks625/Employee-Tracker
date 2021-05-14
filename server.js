@@ -92,7 +92,15 @@ const viewDept = () => {
 };
 
 // viewRole();
-
+const viewRole = () => {
+  connection.query('SELECT * FROM emp_role', (err, res) => {
+    if (err) throw err;
+    res.forEach(({ID, title, salary, department_id }) => {
+      console.log(`${ID} | ${title} | ${salary} | ${department_id}`);
+    });
+    console.log('-----------------------------------');
+  });
+};
 
 
 // viewEmployee();
