@@ -104,6 +104,15 @@ const viewRole = () => {
 
 
 // viewEmployee();
+const viewEmployee = () => {
+  connection.query('SELECT * FROM employee', (err, res) => {
+    if (err) throw err;
+    res.forEach(({ID, first_name, last_name, role_id, manager_id }) => {
+      console.log(`${ID} | ${first_name} | ${last_name} | ${role_id} | ${manager_id}`);
+    });
+    console.log('-----------------------------------');
+  });
+};
 
 const addDept = () => {
   inquirer
