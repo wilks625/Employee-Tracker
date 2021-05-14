@@ -148,6 +148,49 @@ const addRole = () => {
     });
 };
 
-// addEmployee();
+// THIS IS WHERE YOU LEFT OFF 
+const addEmployee = () => {
+  inquirer
+    .prompt([
+       {
+      name: 'empFirst',
+      type: 'input',
+      message: 'What is the first name of the employee you would like to add?'
+    },
+    {
+      name: 'empLast',
+      type: 'input',
+      message: 'What is the last name of the employee you would like to add?'
+    },
+    {
+      name: 'roleID',
+      type: 'input',
+      message: "What is this employee's role ID?"
+    },
+    {
+      name: 'managerID',
+      type: 'input',
+      message: "What is the ID of this employee's manager?"
+    },
+  ])
+    .then((answer) => {
+      // when finished prompting, insert a new item into the db with that info
+      connection.query(
+        'INSERT INTO employee SET ?',
+        {
+          first_name: answer.empFirst,
+          last_name: answer.empLast,
+          role_id: answer.roleID,
+          manager_id: answer.managerID
+        },
+        (err) => {
+          if (err) throw err;
+          console.log('Your Employee was added successfully!');
+          // re-prompt the user for if they want to bid or post
+          runSearch();
+        }
+      );
+    });
+};
 
 // updateRole();
