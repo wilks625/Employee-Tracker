@@ -81,8 +81,19 @@ const runSearch = () => {
 };
 
 // viewDept();
+const viewDept = () => {
+  connection.query('SELECT * FROM department', (err, res) => {
+    if (err) throw err;
+    res.forEach(({ID, dept_name }) => {
+      console.log(`${ID} | ${dept_name}`);
+    });
+    console.log('-----------------------------------');
+  });
+};
 
 // viewRole();
+
+
 
 // viewEmployee();
 
