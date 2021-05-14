@@ -97,14 +97,12 @@ const addDept = () => {
       // when finished prompting, insert a new item into the db with that info
       connection.query(
         'INSERT INTO department SET ?',
-        
         {
           dept_name: answer.addDept,
-          
         },
         (err) => {
           if (err) throw err;
-          console.log('Your auction was created successfully!');
+          console.log('Your Department was added successfully!');
           // re-prompt the user for if they want to bid or post
           runSearch();
         }
@@ -112,7 +110,43 @@ const addDept = () => {
     });
 };
 
-// addRole();
+const addRole = () => {
+  inquirer
+    .prompt([
+       {
+      name: 'roleTitle',
+      type: 'input',
+      message: 'What is the name of the Role you would like to add?'
+    },
+    {
+      name: 'roleSalary',
+      type: 'input',
+      message: 'What is the salary you would like for this role?'
+    },
+    {
+      name: 'roleDeptID',
+      type: 'input',
+      message: 'What is the Department ID for this role?'
+    },
+  ])
+    .then((answer) => {
+      // when finished prompting, insert a new item into the db with that info
+      connection.query(
+        'INSERT INTO emp_role SET ?',
+        {
+          title: answer.roleTitle,
+          salary: answer.roleSalary,
+          department_id: answer.roleDeptID
+        },
+        (err) => {
+          if (err) throw err;
+          console.log('Your Role was added successfully!');
+          // re-prompt the user for if they want to bid or post
+          runSearch();
+        }
+      );
+    });
+};
 
 // addEmployee();
 
