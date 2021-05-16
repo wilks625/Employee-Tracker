@@ -20,6 +20,7 @@ connection.connect((err) => {
 
 const query = util.promisify(connection.query).bind(connection);
 
+// main menu
 const runSearch = () => {
   inquirer
     .prompt({
@@ -84,6 +85,7 @@ const runSearch = () => {
     });
 };
 
+// displays table by order of department name
 const viewDept = async () => {
   const deptTable = await query(
     `SELECT 
@@ -108,6 +110,7 @@ department ON (emp_role.dept_id = department.ID)
   runSearch();
 };
 
+// displays table by order of employee title
 const viewRole = async () => {
   const roleTable = await query(
     `SELECT 
@@ -132,6 +135,7 @@ department ON (emp_role.dept_id = department.ID)
   runSearch();
 };
 
+// displays table of all employees
 const viewEmployee = async () => {
   const empTable = await query(
     `SELECT 
@@ -155,6 +159,7 @@ department ON (emp_role.dept_id = department.ID)
   runSearch();
 };
 
+// displays table by order of manager ID
 const viewManager = async () => {
   const roleTable = await query(
     `SELECT 
@@ -179,6 +184,7 @@ department ON (emp_role.dept_id = department.ID)
   runSearch();
 };
 
+// function to add new department
 const addDept = () => {
   inquirer
     .prompt({
@@ -201,6 +207,7 @@ const addDept = () => {
     });
 };
 
+// function to add new role
 const addRole = () => {
   inquirer
     .prompt([
@@ -237,6 +244,7 @@ const addRole = () => {
     });
 };
 
+// function to add new employee
 const addEmployee = () => {
   inquirer
     .prompt([
@@ -280,6 +288,7 @@ const addEmployee = () => {
     });
 };
 
+// function to update role of existing employees
 const updateRole = () => {
   inquirer
     .prompt([
@@ -327,27 +336,18 @@ const updateRole = () => {
 
 const employeeList = async () => {
   let employees;
-  employees = await query('SELECT * FROM employee');
+  employees = await query("SELECT * FROM employee");
   const empName = employees.map((employee) => {
     return `${employee.first_name} ${employee.last_name}`;
   });
   return empName;
 };
 
-const deptList = async () => {
-  let deptartments;
-  deptartments = await query('SELECT * FROM department');
-  const deptName = deptartments.map((department) => {
-      return `${department.dept_name}`;
-  });
-  return deptName;
-};
-
 const roleList = async () => {
   let roles;
-  roles = await query('SELECT * FROM emp_role');
+  roles = await query("SELECT * FROM emp_role");
   const roleTitle = roles.map((position) => {
-      return `${position.title}`;
+    return `${position.title}`;
   });
   return roleTitle;
 };
