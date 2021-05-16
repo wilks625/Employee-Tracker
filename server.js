@@ -28,13 +28,13 @@ const runSearch = () => {
       type: "list",
       message: "Please choose an option below",
       choices: [
-        "View Departments",
-        "View Roles",
         "View Employees",
         "View Employees by Manager",
+        "View Departments",
+        "View Roles",
+        "Add Employee",
         "Add Department",
         "Add Role",
-        "Add Employee",
         "Update Employee Role",
         // 'Update Employee Manager',
         // 'Delete Department',
@@ -85,54 +85,27 @@ const runSearch = () => {
     });
 };
 
-// displays table by order of department name
-const viewDept = async () => {
-  const deptTable = await query(
-    `SELECT 
-    e.id AS 'Employee ID',
-    e.first_name AS 'First Name',
-    e.last_name AS 'Last Name',
-    department.dept_name AS 'Department',
-    emp_role.title AS 'Title',
-    emp_role.salary AS 'Salary',
-CONCAT(m.first_name, ' ', m.last_name) AS Manager
-FROM
-trackEmployeeDB.employee AS e
-  INNER JOIN
-emp_role ON (e.role_id = emp_role.ID)
-  INNER JOIN
-department ON (emp_role.dept_id = department.ID)
-  LEFT JOIN
-  trackEmployeeDB.employee m ON e.manager_id = m.id
-    ORDER BY department.dept_name;`
-  );
-  console.table(deptTable);
-  runSearch();
+// displays existing departments
+const viewDept = () => {
+  connection.query('SELECT * FROM department', (err, res) => {
+    if (err) throw err;
+    res.forEach(({ID, dept_name }) => {
+      console.log(`${ID} | ${dept_name}`);
+    });
+    console.log('-----------------------------------');
+    runSearch();
+  });
 };
-
-// displays table by order of employee title
-const viewRole = async () => {
-  const roleTable = await query(
-    `SELECT 
-    e.id AS 'Employee ID',
-    e.first_name AS 'First Name',
-    e.last_name AS 'Last Name',
-    department.dept_name AS 'Department',
-    emp_role.title AS 'Title',
-    emp_role.salary AS 'Salary',
-CONCAT(m.first_name, ' ', m.last_name) AS Manager
-FROM
-trackEmployeeDB.employee AS e
-  INNER JOIN
-emp_role ON (e.role_id = emp_role.ID)
-  INNER JOIN
-department ON (emp_role.dept_id = department.ID)
-  LEFT JOIN
-  trackEmployeeDB.employee m ON e.manager_id = m.id
-    ORDER BY emp_role.title;`
-  );
-  console.table(roleTable);
-  runSearch();
+// displays existing roles
+const viewRole = () => {
+  connection.query('SELECT * FROM emp_role', (err, res) => {
+    if (err) throw err;
+    res.forEach(({ID, title, salary, dept_id }) => {
+      console.log(`${ID} | ${title} | ${salary} | ${dept_id}`);
+    });
+    console.log('-----------------------------------');
+    runSearch();
+  });
 };
 
 // displays table of all employees
