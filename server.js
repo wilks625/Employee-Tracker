@@ -206,7 +206,7 @@ const addRole = () => {
         {
           title: answer.roleTitle,
           salary: answer.roleSalary,
-          department_id: answer.roleDeptID,
+          dept_id: answer.roleDeptID,
         },
         (err) => {
           if (err) throw err;
