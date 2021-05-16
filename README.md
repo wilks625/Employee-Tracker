@@ -9,6 +9,10 @@ This application allows the user to:
 - view employees, roles, and departments, 
 - updating employeee roles
 
+![Screen Shot 2021-05-15 at 11 51 47 PM](https://user-images.githubusercontent.com/76915726/118384977-d2417280-b5d8-11eb-83b5-fda37d260f12.png)
+![Screen Shot 2021-05-15 at 11 53 12 PM](https://user-images.githubusercontent.com/76915726/118384979-d4a3cc80-b5d8-11eb-8efc-d3144d034690.png)
+
+
 ## Table of Contents
 - [Title](#Project-Name)
 - [Description](#Description)
