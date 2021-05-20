@@ -13,7 +13,7 @@ This application allows the user to:
 ![Screen Shot 2021-05-15 at 11 53 12 PM](https://user-images.githubusercontent.com/76915726/118384979-d4a3cc80-b5d8-11eb-8efc-d3144d034690.png)
 
 Below is a video that demonstrates the application's functionality:
-https://drive.google.com/file/d/1YDfoU0zOdv3UGRjuFl4zEkyEqLx6LLCF/view
+https://drive.google.com/file/d/1TTNet7ex89eUeGY4kGimmGLeZYms7TXJ/view
 
 
 ## Table of Contents
