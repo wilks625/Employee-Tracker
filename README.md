@@ -12,7 +12,8 @@ This application allows the user to:
 ![Screen Shot 2021-05-15 at 11 51 47 PM](https://user-images.githubusercontent.com/76915726/118384977-d2417280-b5d8-11eb-83b5-fda37d260f12.png)
 ![Screen Shot 2021-05-15 at 11 53 12 PM](https://user-images.githubusercontent.com/76915726/118384979-d4a3cc80-b5d8-11eb-8efc-d3144d034690.png)
 
-Below is a video that demonstrates the application's functionality:
+Below is a video that demonstrates the application's functionality:  
+(click on video to increase viewing size as well as increase video resolution on the bottom right corner of the video)
 https://drive.google.com/file/d/1TTNet7ex89eUeGY4kGimmGLeZYms7TXJ/view
 
 
